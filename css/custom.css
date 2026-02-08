@@ -1,0 +1,495 @@
+/*Custom CSS*/
+
+/* 重置页面边距，确保背景图延伸到顶部 */
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* 导航栏绝对定位，使其覆盖在背景图上方 */
+.nav-container {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000 !important;
+}
+
+.top-bar {
+    position: relative;
+    z-index: 1001 !important;
+}
+
+/* Logo 透明度调整 */
+.logo {
+    opacity: 0.85;
+    transition: opacity 0.3s ease;
+    border-radius: 8px;
+    position: relative;
+    z-index: 1002 !important;
+    /* 如果 logo 有白色背景，使用混合模式让它看起来透明 */
+    mix-blend-mode: multiply;
+    background: transparent;
+}
+
+/* 英雄区域标题样式增强 */
+.hero-title {
+    font-size: 56px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3), 0 4px 20px rgba(0, 0, 0, 0.2);
+    line-height: 1.3;
+    opacity: 0;
+    will-change: opacity, transform;
+}
+
+.hero-subtitle {
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    margin-top: 20px;
+    opacity: 0;
+    will-change: opacity, transform, letter-spacing;
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 36px;
+        letter-spacing: 1px;
+    }
+    
+    .hero-subtitle {
+        font-size: 18px;
+    }
+}
+
+/* ============ 回到顶部按钮 ============ */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 55px;
+    height: 55px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 9999;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+    background: rgba(255, 255, 255, 1);
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+.back-to-top:active {
+    transform: translateY(-4px) scale(0.98);
+}
+
+.back-to-top .icon {
+    color: #333;
+    width: 28px;
+    height: 28px;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 0 auto;
+    flex-shrink: 0;
+}
+
+.back-to-top:hover .icon {
+    color: #000;
+    transform: translateY(-3px);
+}
+
+/* 移动端图标调整 */
+@media (max-width: 768px) {
+    .back-to-top .icon {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+/* 添加脉动动画 */
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+    50% {
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 0 0 8px rgba(0, 0, 0, 0.05);
+    }
+}
+
+.back-to-top.show {
+    animation: pulse 2s infinite;
+}
+
+.back-to-top:hover {
+    animation: none;
+}
+
+@media (max-width: 768px) {
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* 导航栏背景透明，让背景图直接显示到最顶部 */
+.top-bar.overlay-bar {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* 确保主容器和全屏元素从顶部开始 */
+.main-container {
+    position: relative;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+header.fullscreen-element,
+.main-container > header:first-child {
+    padding-top: 0 !important;
+}
+
+/* 强制英雄区域标题垂直居中 */
+header.fullscreen-element .container.align-vertical {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 100vh !important;
+    padding-top: 0 !important;
+}
+
+header.fullscreen-element .container.align-vertical .row {
+    width: 100%;
+}
+
+header.fullscreen-element .background-image-holder {
+    top: 0 !important;
+}
+
+/* 确保hero-divider的背景图也从顶部开始 */
+.hero-divider {
+    padding-top: 160px !important;
+}
+
+.hero-divider .background-image-holder {
+    top: 0 !important;
+}
+
+/* 确保page-header的背景图也从顶部开始 */
+.page-header,
+.page-header-xs {
+    padding: 0 !important;
+    margin: 0 !important;
+    margin-top: 0 !important;
+    min-height: 400px !important;
+    position: relative !important;
+    overflow: visible !important;
+}
+
+.page-header .background-image-holder,
+.page-header-xs .background-image-holder {
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute !important;
+    margin: 0 !important;
+}
+
+/* 覆盖theme.css中的background-image-holder样式 */
+.page-header .background-image-holder,
+.page-header-xs .background-image-holder {
+    height: 100% !important;
+    top: 0 !important;
+}
+
+/* 让page-header整体向上移动到导航栏下方 */
+.main-container > header.page-header,
+.main-container > header.page-header-xs {
+    position: relative;
+    top: -100px; /* 向上移动100px，抵消main-container的padding */
+    margin-bottom: -100px;
+}
+
+/* 让文本内容往下移动100px，抵消header的上移 */
+.page-header .container,
+.page-header-xs .container {
+    padding-top: 260px !important; /* 原来的160px + 100px */
+}
+
+/* 移除page-header的灰色覆盖层 */
+.page-header:before,
+.page-header-xs:before {
+    display: none !important;
+}
+
+/* 为page-header内的内容添加顶部padding */
+.page-header .container,
+.page-header-xs .container {
+    padding-top: 160px;
+    padding-bottom: 100px;
+    position: relative;
+    z-index: 3;
+}
+
+/* 强制background-image覆盖整个区域 */
+.page-header .background-image,
+.page-header-xs .background-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+/* 确保项目案例页面的section从顶部开始，没有额外间距 */
+section.section-small-padding {
+    padding-top: 0 !important;
+}
+
+/* 确保timeline容器也没有额外的顶部间距 */
+.timeline {
+    margin-top: 0 !important;
+}
+
+/* 确保导航菜单文字在背景图上可见 - 使用白色文字加阴影 */
+.top-bar.overlay-bar .menu li a {
+    color: #fff !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+    transition: color 0.2s ease !important;
+    will-change: transform;
+}
+
+.top-bar.overlay-bar .menu li a:hover {
+    color: #f0f0f0 !important;
+}
+
+.top-bar.overlay-bar .has-dropdown:after {
+    color: #fff !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 语言图标也确保可见 */
+.top-bar.overlay-bar .language img {
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.top-bar.overlay-bar .language img:hover {
+    opacity: 1;
+}
+
+.logo:hover {
+    opacity: 1;
+}
+
+/* 图片圆角效果 */
+img {
+    border-radius: 6px;
+}
+
+/* 背景图片不需要圆角 */
+.background-image {
+    border-radius: 0;
+}
+
+/* Logo 图片稍微大一点的圆角 */
+.logo.logo-light,
+.logo.logo-dark {
+    border-radius: 10px;
+}
+
+/* ============ 团队轮播样式 ============ */
+.team-carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+    overflow: hidden;
+}
+
+.team-carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    padding: 0 60px;
+}
+
+.team-carousel-track {
+    display: flex;
+    gap: 30px;
+    transition: transform 0.5s ease;
+}
+
+.team-carousel-item {
+    flex: 0 0 calc(33.333% - 20px);
+    max-width: calc(33.333% - 20px);
+}
+
+.team-carousel-item .team-1-member {
+    background: #fff;
+    border-radius: 12px;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.team-carousel-item .team-1-member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.team-carousel-item .team-1-member img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 15px;
+    border: 4px solid #f0f0f0;
+}
+
+.team-carousel-item .team-1-member h2 {
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.team-carousel-item .team-1-member h5 {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 15px;
+    font-weight: normal;
+}
+
+.team-carousel-item .team-1-member p {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* 导航按钮 */
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #333;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-nav:hover {
+    background: #fff;
+    border-color: #007bff;
+    color: #007bff;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+.carousel-nav-prev {
+    left: 10px;
+}
+
+.carousel-nav-next {
+    right: 10px;
+}
+
+.carousel-nav:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* 指示器 */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+    background: #007bff;
+    transform: scale(1.2);
+}
+
+.carousel-dot:hover {
+    background: #007bff;
+}
+
+/* 响应式设计 */
+@media (max-width: 992px) {
+    .team-carousel-item {
+        flex: 0 0 calc(50% - 15px);
+        max-width: calc(50% - 15px);
+    }
+}
+
+@media (max-width: 576px) {
+    .team-carousel-item {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .carousel-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .carousel-nav-prev {
+        left: 5px;
+    }
+
+    .carousel-nav-next {
+        right: 5px;
+    }
+
+    .team-carousel-wrapper {
+        padding: 0 50px;
+    }
+}
